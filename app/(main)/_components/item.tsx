@@ -12,27 +12,27 @@ import {
 //   ChevronRight, 
   LucideIcon,
   Plus,
-//   MoreHorizontal,
+  MoreHorizontal,
 //   Plus,
-//   Trash
+  Trash
 } from "lucide-react";
 // import { useMutation } from "convex/react";
 import { useRouter } from "next/navigation";
 import { toast } from "sonner";
 // import { toast } from "sonner";
-// import { useUser } from "@clerk/clerk-react";
+import { useUser } from "@clerk/clerk-react";
 
 // import { Id } from "@/convex/_generated/dataModel";
 // import { cn } from "@/lib/utils";
 // import { Skeleton } from "@/components/ui/skeleton";
 // import { api } from "@/convex/_generated/api";
-// import {
-//   DropdownMenu,
-//   DropdownMenuTrigger,
-//   DropdownMenuContent,
-//   DropdownMenuItem,
-//   DropdownMenuSeparator
-// } from "@/components/ui/dropdown-menu";
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuSeparator
+} from "@/components/ui/dropdown-menu";
 
 interface ItemProps {
   id?: Id<"documents">;
@@ -59,25 +59,25 @@ export const Item = ({
   onExpand,
   expanded,
 }: ItemProps) => {
-  // const { user } = useUser();
+  const { user } = useUser();
   const router = useRouter();
   const create = useMutation(api.documents.create);
-  // const archive = useMutation(api.documents.archive);
+  const archive = useMutation(api.documents.archive);
 
-  // const onArchive = (
-  //   event: React.MouseEvent<HTMLDivElement, MouseEvent>
-  // ) => {
-  //   event.stopPropagation();
-  //   if (!id) return;
-  //   const promise = archive({ id })
-  //     .then(() => router.push("/documents"))
+  const onArchive = (
+    event: React.MouseEvent<HTMLDivElement, MouseEvent>
+  ) => {
+    event.stopPropagation();
+    if (!id) return;
+    const promise = archive({ id })
+      // .then(() => router.push("/documents"))
 
-  //   toast.promise(promise, {
-  //     loading: "Moving to trash...",
-  //     success: "Note moved to trash!",
-  //     error: "Failed to archive note."
-  //   });
-  // };
+    toast.promise(promise, {
+      loading: "Moving to trash...",
+      success: "Note moved to trash!",
+      error: "Failed to archive note."
+    });
+  };
 
   const handleExpand = (
     event: React.MouseEvent<HTMLDivElement, MouseEvent>
@@ -150,7 +150,7 @@ export const Item = ({
       )}
       {!!id && (
         <div className="ml-auto flex items-center gap-x-2">
-          {/* <DropdownMenu>
+          <DropdownMenu>
             <DropdownMenuTrigger
               onClick={(e) => e.stopPropagation()}
               asChild
@@ -177,7 +177,7 @@ export const Item = ({
                 Last edited by: {user?.fullName}
               </div>
             </DropdownMenuContent>
-          </DropdownMenu> */}
+          </DropdownMenu>
           <div
             role="button"
             onClick={onCreate}
