@@ -2,10 +2,11 @@
 
 import { cn } from "@/lib/utils";
 import { ChevronsLeft, MenuIcon, Plus, PlusCircle, Search, Settings, Trash } from "lucide-react"
-import { usePathname, useSearchParams } from "next/navigation";
+import { usePathname } from "next/navigation";
 import { ElementRef, useEffect, useRef, useState } from "react"
 import { useMediaQuery } from "usehooks-ts";
 import { useMutation } from "convex/react";
+import { useSearch } from "@/hooks/use-search";
 import { UserItem } from "./user-item";
 import { Item } from "./item";
 import { toast } from "sonner";
@@ -16,7 +17,7 @@ import { TrashBox } from "./trash-box";
 
 export const Navigation = () => {
   // const settings = useSettings();
-  const search = useSearchParams();
+  const search = useSearch();
   const pathname = usePathname();
   const isMobile = useMediaQuery("(max-width: 768px)");
   const create = useMutation(api.documents.create);
