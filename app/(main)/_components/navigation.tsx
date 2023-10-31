@@ -12,6 +12,7 @@ import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
 import { DocumentList } from "./document-list";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
+import { TrashBox } from "./trash-box";
 
 export const Navigation = () => {
   // const settings = useSettings();
@@ -165,8 +166,7 @@ export const Navigation = () => {
               className="p-0 w-72"
               side={isMobile ? "bottom" : "right"}
             >
-              <p>Trash Box</p>
-              {/* <TrashBox /> */}
+              <TrashBox />
             </PopoverContent>
           </Popover>
         </div>
