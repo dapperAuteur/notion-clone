@@ -10,6 +10,7 @@ import { UserItem } from "./user-item";
 import { Item } from "./item";
 import { toast } from "sonner";
 import { api } from "@/convex/_generated/api";
+import { DocumentList } from "./document-list";
 
 export const Navigation = () => {
   // const settings = useSettings();
@@ -149,7 +150,7 @@ export const Navigation = () => {
           />
         </div>
         <div className="mt-4">
-          <p>Documents</p>
+          <DocumentList />
         </div>
         <div
           onMouseDown={handleMouseDown}
