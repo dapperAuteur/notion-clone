@@ -59,7 +59,6 @@ const DocumentIdPage = ({
     <div className="pb-40">
       <Cover url={document.coverImage} />
       <div className="md:max-w-3xl lg:max-w-4xl mx-auto">
-        DocumentId
         <Toolbar initialData={document} />
         <Editor
           onChange={onChange}
