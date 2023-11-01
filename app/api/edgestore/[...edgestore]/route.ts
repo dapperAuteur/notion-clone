@@ -8,9 +8,9 @@ const es = initEdgeStore.create();
  */
 const edgeStoreRouter = es.router({
   publicFiles: es.fileBucket()
-    // .beforeDelete(() => {
-    //   return true;
-    // }),
+    .beforeDelete(() => {
+      return true;
+    }),
 });
  
 const handler = createEdgeStoreNextHandler({
